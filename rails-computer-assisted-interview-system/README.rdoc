@@ -1,27 +1,19 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**FOR DEVELOPERS**
 
-Things you may want to cover:
+**HOW TO USE:**
+Do the same way we did for our homework. On your Amazon Cloud9:
 
-* Ruby version
+[On github]
+create a new branch.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[On Amazon Cloud9]
+rvm use 2.4.0
+git clone -b <YOUR_BRANCH> <THIS_REPOSITORY_URL>
+bundle install --without production
+bundle exec rake db:setup
+rails server -p $PORT -b $IP
 
 
 Please feel free to use a different markup language if you do not plan to run

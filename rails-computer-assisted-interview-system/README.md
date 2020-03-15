@@ -3,9 +3,12 @@
 ## HOW TO USE:
 
 Do the same way we did for our homework.
+
+
 **On github**
 
 create a new branch.
+
 
 **On Amazon Cloud9**
 

@@ -19,7 +19,3 @@ bundle install --without production
 bundle exec rake db:setup
 
 rails server -p $PORT -b $IP
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

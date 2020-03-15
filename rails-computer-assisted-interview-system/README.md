@@ -1,16 +1,16 @@
 == README
 
-## HOW TO USE:
+# HOW TO USE:
 
 Do the same way we did for our homework.
 
 
-**On github**
+### **On github**
 
 create a new branch.
 
 
-**On Amazon Cloud9**
+### **On Amazon Cloud9**
 
 rvm use 2.4.0
 

@@ -2,8 +2,7 @@
 
 ## HOW TO USE:
 
-Do the same way we did for our homework. On your Amazon Cloud9:
-
+Do the same way we did for our homework.
 **On github**
 
 create a new branch.

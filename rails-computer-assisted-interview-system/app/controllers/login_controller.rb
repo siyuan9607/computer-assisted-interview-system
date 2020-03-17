@@ -7,13 +7,13 @@ class LoginController < ApplicationController
     end
     
     def create
-        user = User.find_by(email: params[:email])
-        if user && user.authenticate(params[:password])
+        user = User.find_by(email: params[:login][:email])
+        if user && params[:login][:password] == user.password
             flash[:notice] ="you have been logged in"
-            redirect_to enroll_path
+            redirect_to root_path
         else
             flash[:notice] ="users does not found in the system"
-            redirect_to root_path
+            redirect_to enroll_path
         end
     end
     

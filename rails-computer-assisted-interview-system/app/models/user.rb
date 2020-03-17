@@ -1,3 +1,5 @@
 class User < ActiveRecord::Base
-  include Clearance::User
+      def self.role
+          return ['supervisor','interviewer']
+      end
 end

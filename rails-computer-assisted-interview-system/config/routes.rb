@@ -55,5 +55,6 @@ Rails.application.routes.draw do
   root  "login#welcome"
   get  "log_in" =>"login#new"
   get  "enroll"=>"users#new"
-  post  "users" =>"users#create"
+  post "users" =>"users#create"
+  post "log_in" =>"login#create"
 end

@@ -13,8 +13,12 @@ class UsersController < ApplicationController
    
    def create
        @user = User.new(user_params)
-       flash[:notice] = "#{@user.name} has been added to the system"
-       redirect_to root_path
+       if @user.save
+          flash[:notice] = "#{@user.name} has been added to the system"
+          redirect_to root_path
+       else
+          render 'new'
+       end
    end
    
    def destroy

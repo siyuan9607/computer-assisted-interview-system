@@ -11,7 +11,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200315034735) do
+ActiveRecord::Schema.define(version: 20200323205442) do
+
+  create_table "options", force: :cascade do |t|
+    t.integer "qstep_id"
+    t.integer "option_id"
+  end
+
+  add_index "options", ["option_id"], name: "index_options_on_option_id"
+  add_index "options", ["qstep_id"], name: "index_options_on_qstep_id"
+
+  create_table "qformats", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "startstep_id"
+  end
+
+  add_index "qformats", ["startstep_id"], name: "index_qformats_on_startstep_id"
+
+  create_table "qnaires", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "qformat_id"
+    t.integer  "current_id"
+    t.integer  "status"
+  end
+
+  add_index "qnaires", ["current_id"], name: "index_qnaires_on_current_id"
+  add_index "qnaires", ["qformat_id"], name: "index_qnaires_on_qformat_id"
+
+  create_table "qstates", force: :cascade do |t|
+    t.string  "answer"
+    t.integer "qnaire_id"
+    t.integer "qstep_id"
+  end
+
+  add_index "qstates", ["qnaire_id"], name: "index_qstates_on_qnaire_id"
+  add_index "qstates", ["qstep_id"], name: "index_qstates_on_qstep_id"
+
+  create_table "qsteps", force: :cascade do |t|
+    t.string   "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.integer  "qformat_id"
+    t.integer  "kind"
+  end
+
+  add_index "qsteps", ["qformat_id"], name: "index_qsteps_on_qformat_id"
 
   create_table "users", force: :cascade do |t|
     t.string "name"

@@ -1,0 +1,19 @@
+You are at questionnaire <%= @qn.id %><br>
+
+<%if @qn.status==200 %>
+  Here is the document or direction for interviewer:<br>
+  <%= @current.document %> <br>
+  <form method="post">
+    Try these options to go on. <br>
+    <%= form_for :select, url: qnaire_path(@qn), method: :put do |select|%>
+      <% @options.each do |opt|%>
+        <%= select.radio_button :option, opt.id %> <%=opt.name%><br>
+      <% end %>
+      <%= select.label "Answer"%>
+      <%= select.text_field :answer%><br>
+      <%= select.submit "Ok" %>
+    <% end %>
+  </form>
+<%else %>
+This Questionnaire is already completed.
+<%end %>

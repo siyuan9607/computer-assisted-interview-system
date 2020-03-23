@@ -57,4 +57,5 @@ Rails.application.routes.draw do
   get  "enroll"=>"users#new"
   post "users" =>"users#create"
   post "log_in" =>"login#create"
+  resources :qnaires, only:[:show, :index, :update]
 end

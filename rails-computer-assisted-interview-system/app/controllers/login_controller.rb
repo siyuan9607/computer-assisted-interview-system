@@ -1,5 +1,7 @@
 # created by Somyung Oh
 class LoginController < ApplicationController
+    before_filter :authenticate_user!
+    before_filter :set_post, only:[:show,:edit,:update,:destroy]
     def show
     end
     

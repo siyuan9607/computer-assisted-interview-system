@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200323205442) do
+ActiveRecord::Schema.define(version: 20200325223659) do
 
   create_table "options", force: :cascade do |t|
     t.integer "qstep_id"
@@ -61,16 +61,20 @@ ActiveRecord::Schema.define(version: 20200323205442) do
 
   add_index "qsteps", ["qformat_id"], name: "index_qsteps_on_qformat_id"
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.string "role"
+  create_table "qsteps_qsteps", force: :cascade do |t|
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["name"], name: "index_users_on_name"
-  add_index "users", ["password"], name: "index_users_on_password"
-  add_index "users", ["role"], name: "index_users_on_role"
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "role"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

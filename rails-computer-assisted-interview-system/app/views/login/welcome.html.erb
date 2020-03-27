@@ -2,8 +2,74 @@
 
 <div>
 <% if user_signed_in? %>
-    <h1> welcome to the </h1>
-    <h2> Computer-assisted-interview system. </h2>
+    <h1 class="text-center"> Welcome to Computer-assisted-interview system. </h1><br>
+    <br>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-5">
+            
+            <h2> Notification </h2>
+            
+            <table class="table table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>This is a notification table.</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Corona Virus is going bad</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="col-lg-5">
+            
+            <h2> Active Interviews </h2>
+            
+            <table class="table table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Manager</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Steve Jobs</td>
+                  <td>Is Apple Watch too expensive?</td>
+                  <td><button type="button" class="btn btn-info btn-sm">View</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Duncan H. Walker</td>
+                  <td>Is Corona-Virus related email too much?</td>
+                  <td><button type="button" class="btn btn-info btn-sm">View</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Donald Trump</td>
+                  <td>Why am I so handsome?</td>
+                  <td><button type="button" class="btn btn-info btn-sm">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+            
+        </div>
+
+      </div>
+    </div>
+    
 <%else%>
     <h1> prepare to log in</h1>
 <%end%>

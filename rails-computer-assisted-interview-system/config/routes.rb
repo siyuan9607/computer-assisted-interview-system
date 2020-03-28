@@ -53,12 +53,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root  "login#welcome"
-  get  "log_in" =>"login#new"
-  get  "enroll"=>"users#new"
-  post "users" =>"users#create"
+  root  "home#index"
   get "qnaires" => "qnaires#index"
   get "qnaires_start" => "qnaires#show"
-  delete "sign_out"  => "users#destroy"
   resources :qnaires, only:[:show, :index, :update]
 end

@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div>
+<% if user_signed_in? %>
+
+        <center>
+            <h4> Welcome to the Computer-assisted-interview system</h4>
+        </center>
+    
+        <div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 350px; width:500px; background-color: rgba(255,0,0,0.1);">
+            <center><h3>test</h3></center>
+            <p></p>
+            <p>button1</p>
+            <p>button2</p>
+            <p>button3</p>
+        </div>
+        
+        <div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 200px; width:500px; background-color: rgba(255,0,0,0.2);">
+            <center><h3>test</h3></center>
+            <p></p>
+            <p>button1</p>
+            <p>button2</p>
+            <p>button3</p>
+        </div>
+       
+        <%= will_paginate @users %>
+        <table class = "w3-table">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+
+
+        </table>
+        <tr>
+          <td>@users.name</td>
+          <td>@users.email</td>
+          <td>@users.role</td>
+        </tr>
+        <%= will_paginate @users %>
+<%else%>
+    <h1> prepare to log in</h1>
+<%end%>
+
+</div>

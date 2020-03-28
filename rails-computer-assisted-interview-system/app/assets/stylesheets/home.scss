@@ -1,0 +1,20 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* { 
+	margin: 0px; 
+	padding: 0px; 
+}
+
+div{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+div.absolute {
+    margin-left: 20px;
+    margin-right: 20px;
+    position: absolute;
+    top: 104px;
+    right: 192px;
+}

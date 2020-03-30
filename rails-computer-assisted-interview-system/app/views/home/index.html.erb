@@ -22,7 +22,6 @@
             <p>button3</p>
         </div>
        
-        <%= will_paginate @users %>
         <table class = "w3-table">
             <tr>
               <th>Name</th>
@@ -30,14 +29,13 @@
               <th>Role</th>
             </tr>
 
-
-        </table>
+        <% @users.each do |user|%>
         <tr>
-          <td>@users.name</td>
-          <td>@users.email</td>
-          <td>@users.role</td>
+          <td><%=user.name%></td>
+          <td><%=user.email%></td>
+          <td><%=user.role%></td>
         </tr>
-        <%= will_paginate @users %>
+        <%end%>
 <%else%>
     <h1> prepare to log in</h1>
 <%end%>

@@ -1,7 +1,6 @@
 class NavigationController < ApplicationController
-  def new
+  def index
+    
   end
 
-  def create
-  end
 end

@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     def index
         if user_signed_in?
            if current_user.role == 'supervisor'
-              @users= User.all
+              @users= User.where(:role => 'interviewer')
            else    
               redirect_to qnaires_path
            end

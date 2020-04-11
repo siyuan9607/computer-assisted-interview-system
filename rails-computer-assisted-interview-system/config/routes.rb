@@ -61,5 +61,7 @@ Rails.application.routes.draw do
   get "navigation" => "navigation#index"
   get "qnaires" => "qnaires#index"
   get "qnaires_start" => "qnaires#show"
+  get "create_account" => "users#new"
+  resources :users
   resources :qnaires, only:[:show, :index, :update]
 end

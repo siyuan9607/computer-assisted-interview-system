@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-   
-   def user_params
+    def user_params
        params.require(:user).permit(:name,:email,:password,:role)
-   end
+    end
    
    def show
    end
@@ -25,6 +24,7 @@ class UsersController < ApplicationController
        @user = User.find(current_user)
        @user.destroy
        flash[:notice] = "#{@user.name} has been signed out from the system"
-       redirect_to root_path
+       redirect_to root_path 
    end
+   
 end

@@ -7,16 +7,13 @@ Feature: login to the computer assisted interview system
 Background: there is an administrator account
 
   Given the following users exist:
-  | email             | password  | role   |
-  | admin@example.com | password  | admin  |
-
-  And  I am on the login page
+  | email             | password  | password_confirmation   | role    |
+  | admin@example.com | password  | password                | admin   |
 
 Scenario: login to the system
-  When I check the following ratings: PG, R
-  And I uncheck the following ratings: G, PG-13
-  And I press "ratings_submit"
-  Then I should see "The Incredibles"
-  And I should see "The Terminator"
-  And I should not see "Alladin"
-  And I should not see "The Help"
+  When I go to the home page
+  Then I should be on the login page
+  And I fill in "user_email" with "admin@example.com"
+  And I fill in "user_password" with "password"
+  And I press "user_login"
+  And I should be on the home page

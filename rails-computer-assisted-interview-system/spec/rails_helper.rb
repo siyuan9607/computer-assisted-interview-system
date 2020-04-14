@@ -62,5 +62,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   
+  # Devise library support for tests
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
   config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Warden::Test::Helpers
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200325223659) do
+ActiveRecord::Schema.define(version: 20200412152437) do
 
   create_table "options", force: :cascade do |t|
     t.integer "qstep_id"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20200325223659) do
 
   add_index "options", ["option_id"], name: "index_options_on_option_id"
   add_index "options", ["qstep_id"], name: "index_options_on_qstep_id"
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "false"
+    t.datetime ""
+    t.datetime "entry_time"
+    t.string   "sql_link"
+  end
 
   create_table "qformats", force: :cascade do |t|
     t.string   "name"

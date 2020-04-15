@@ -1,0 +1,39 @@
+<%-# This file is app/views/users/new -%>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+<style>
+.w3-lobster {
+  font-family: "Lobster", serif;
+}
+</style>
+
+<% provide(:title, 'Create new project') %>
+<div class="col-md-4 col-md-offset-4">
+    <center><div class = "w3-container; w3-panel w3-round w3-border w3-border", style = "background-color: rgba(0,0,0,0.1)">
+        <center><div class="w3-container w3-lobster">
+            <p class="w3-xxlarge">Sign Up</p>
+        </div></center>
+        
+        <%= form_for(@project) do |f| %>
+            <%= f.label :name %>
+            <p></p>
+            <%= f.text_field :name, autofocus: true, autocomplete: "prname" %>
+            <p></p>
+            
+            <%= f.label :entry_time %>
+            <p></p>
+            <%= f.text_field :entry_time, :value => Time.now.in_time_zone  %>
+            <p></p>
+            
+            <%= f.label :sql_link %>
+            <%= f.text_area :sql_link %>
+            <p></p>
+            
+            <div class="col-md-6 col-md-offset-3">
+                <%= f.submit "Create project", class: "btn btn-primary" %>
+                <p></p>
+            </div></center>
+        <% end %>
+    </div>
+</div>

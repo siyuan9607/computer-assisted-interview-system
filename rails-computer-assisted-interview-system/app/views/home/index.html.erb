@@ -14,6 +14,13 @@
                     <p>button1</button1></p>
                     <p>button2</p>
                     <p>button3</p>
+                    <% @projects.each do |project|%>
+                        <tr>
+                          <td><%=project.name%></td>
+                          <td><%=project.entry_time%></td>
+                          <td><%=link_to project.sql_link, project.sql_link if project.sql_link.present?%></td>
+                        </tr>
+                        <%end%>
                 </div></td>
                 <td><div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 350px; width:500px; background-color: rgba(255,0,0,0.1);">
                     <center><h3>test</h3></center>

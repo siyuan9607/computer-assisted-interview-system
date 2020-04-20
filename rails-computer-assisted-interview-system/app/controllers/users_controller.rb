@@ -20,6 +20,11 @@ class UsersController < ApplicationController
        end
    end
    
+   def assign
+       id = params[:id]
+       User.update(current_user, :project_id => id)
+       redirect_to show_users_path 
+   end
    def destroy
        @user = User.find(current_user)
        @user.destroy

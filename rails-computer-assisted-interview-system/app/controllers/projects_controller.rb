@@ -20,6 +20,11 @@
            end
        end
        
+       def show_users
+          @user_assigned = User.where(:project_id == params[:id])
+          @user_free = User.where(:project_id == NIL)
+       end
+
        def destroy
            
        end

@@ -1,0 +1,19 @@
+<h1 class = "text-center">Navigation</h1><br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">interviewer_name</th>
+    </tr>
+  </thead>
+  <tbody>
+       <% @user_free.each do |user|%>
+            <% if user.role == 'interviewer'%>
+            <tr>
+                <td><%=user.name%></td>
+                <td><%=link_to '<button type="button">Assign interviewer</button>'.html_safe, assign_users_path, :id => params[:id] %></td>
+            </tr>
+            <%end%>
+       <%end%>
+  </tbody>
+</table>

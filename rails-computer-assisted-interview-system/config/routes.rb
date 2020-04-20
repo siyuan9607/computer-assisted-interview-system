@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   get "qnaires_start" => "qnaires#show"
   get "create_account" => "users#new"
   get "create_project" => "projects#new"
+  get "show_users"  =>"projects#show_users"
+  get "assign_users" =>"users#assign"
   resources :users
   resources :projects
   resources :qnaires, only:[:show, :index, :update]

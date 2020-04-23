@@ -3,11 +3,11 @@
 
 require 'rails_helper'
 
-# login
-describe HomeController do
+# users
+describe UsersController do
     describe "Admin not logged in" do
         it "should redirect to login page" do
-            get :index
+            get :new
             response.should redirect_to(new_user_session_path)
         end
     end
@@ -16,9 +16,9 @@ describe HomeController do
             user = User.create!({ :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password',:role => "admin" })
             sign_in user
         end
-        it "should render the home page" do
-            get :index
-            response.should render_template(root_path)
+        it "should redirect to home page" do
+            get :new
+            response.should render_template(:new)
         end
     end
 end

@@ -11,15 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200412152437) do
+ActiveRecord::Schema.define(version: 20200422205447) do
 
   create_table "options", force: :cascade do |t|
-    t.integer "qstep_id"
-    t.integer "option_id"
+    t.integer  "qstep_id"
+    t.integer  "qstep2_id"
+    t.string   "noticestr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "options", ["option_id"], name: "index_options_on_option_id"
+  add_index "options", ["qstep2_id"], name: "index_options_on_qstep2_id"
   add_index "options", ["qstep_id"], name: "index_options_on_qstep_id"
+
+  create_table "optrecords", force: :cascade do |t|
+    t.integer  "qnaire_id"
+    t.integer  "qstep_id"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "optrecords", ["qnaire_id"], name: "index_optrecords_on_qnaire_id"
+  add_index "optrecords", ["qstep_id"], name: "index_optrecords_on_qstep_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"

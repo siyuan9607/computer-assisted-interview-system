@@ -67,5 +67,6 @@ Rails.application.routes.draw do
   get "assign_users" =>"users#assign"
   resources :users
   resources :projects
-  resources :qnaires, only:[:show, :index, :update]
+  resources :qnaires, only:[:show, :index, :update, :new, :create]
+  resources :qformats
 end

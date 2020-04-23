@@ -7,7 +7,7 @@ You are at questionnaire <%= @qn.id %><br>
     Try these options to go on. <br>
     <%= form_for :select, url: qnaire_path(@qn), method: :put do |select|%>
       <% @options.each do |opt|%>
-        <%= select.radio_button :option, opt.id %> <%=opt.name%><br>
+        <%= select.radio_button :option, opt["id"] %> <%=opt["notice"]%><br>
       <% end %>
       <%= select.label "Answer"%>
       <%= select.text_field :answer%><br>

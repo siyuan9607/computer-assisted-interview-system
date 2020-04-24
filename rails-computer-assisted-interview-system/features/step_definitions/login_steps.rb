@@ -40,12 +40,17 @@ And /I click "(.*)"/ do |link|
     click_link(link)
 end
 
+And /I select "(.*)" as "(.*)"/ do |element, option|
+    select option, :from => element
+end
+
+
 And /I should see "(.*)"/ do |content|
     page.should have_content(content)
 end
 
-And /I should see "(.*)"/ do |content|
-    page.should have_content(content)
+And /I should not see "(.*)"/ do |content|
+    page.should_not have_content(content)
 end
 
 # Then
@@ -53,7 +58,8 @@ Then /I should be on the (.*) page/ do |page_name|
     path_mapping = {
         'login' => new_user_session_path,
         'home' => root_path,
-        'sign up' => create_account_path
+        'sign up' => create_account_path,
+        'qnaires' => qnaires_path,
     }
     current_path = URI.parse(current_url).path
     if current_path.respond_to? :should

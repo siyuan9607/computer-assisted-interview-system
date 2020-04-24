@@ -13,11 +13,12 @@ describe HomeController do
     end
     describe "Admin logged in\n" do
         before :each do
-            user = User.create!({ :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password',:role => "admin" })
-            sign_in user
+            @admin = User.create!({ :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password',:role => "admin" })
+            sign_in @admin
         end
-        it "should render the home page" do
+        it "should be successful and render the home page" do
             get :index
+            response.should be_success
             response.should render_template(root_path)
         end
     end

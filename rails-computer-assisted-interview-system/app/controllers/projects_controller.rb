@@ -12,6 +12,7 @@
        
        def create
            @project = Project.new(project_params)
+           @project.qformat_id=Qformat.first
            if @project.save
               flash[:notice] = "#{@project.name} has been added to the system"
               redirect_to root_path

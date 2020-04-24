@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200422205447) do
+ActiveRecord::Schema.define(version: 20200424190215) do
 
   create_table "options", force: :cascade do |t|
     t.integer  "qstep_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20200422205447) do
     t.datetime ""
     t.datetime "entry_time"
     t.string   "sql_link"
+    t.integer  "qformat_id"
   end
 
   create_table "qformats", force: :cascade do |t|

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def user_params
-       params.require(:user).permit(:name,:email,:password,:role)
+       params.require(:user).permit(:name,:email,:password,:role,:project_id)
     end
    
    def show
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
    def new
       @user = User.new
    end
+   
    
    def create
        @user = User.new(user_params)
@@ -20,11 +21,23 @@ class UsersController < ApplicationController
        end
    end
    
-   def assign
-       id = params[:id]
-       User.update(current_user, :project_id => id)
-       redirect_to show_users_path 
-   end
+    def assign
+          user_name = params[:user_name]
+          @user = User.find_by(name: user_name)
+          project_name = params[:project_name]
+          @project = Project.find_by(name: project_name)
+          @user.update!(project_id: @project.id)
+          flash[:notice] = "#{@user.name} has been assigned to #{@project.name}"
+          redirect_to show_projects_path
+    end
+   
+   def disassign
+          user_email = params[:user_email]
+          @user = User.find_by(email: user_email)
+          @user.update!(project_id: NIL)
+          redirect_to show_projects_path
+   end      
+   
    def destroy
        @user = User.find(current_user)
        @user.destroy

@@ -15,7 +15,7 @@
                 <td><%=project.name%></td>
                 <td><%=project.entry_time%></td>
                 <td><%=link_to project.sql_link, project.sql_link if project.sql_link.present?%></td>
-                <td><%=link_to '<button type="button">Manage interviewer</button>'.html_safe, show_users_path%></td>
+                <td><%=link_to "manage interviewer", project_path(project)%></td>
             </tr>
        <%end%>
   </tbody>

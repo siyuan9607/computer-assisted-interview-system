@@ -22,10 +22,8 @@ ActiveRecord::Schema.define(version: 20200412152437) do
   add_index "options", ["qstep_id"], name: "index_options_on_qstep_id"
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "false"
-    t.datetime ""
-    t.datetime "entry_time"
+    t.string   "name",       default: "", null: false
+    t.datetime "entry_time",              null: false
     t.string   "sql_link"
   end
 
@@ -84,7 +82,6 @@ ActiveRecord::Schema.define(version: 20200412152437) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["project_id"], name: "index_users_on_project_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

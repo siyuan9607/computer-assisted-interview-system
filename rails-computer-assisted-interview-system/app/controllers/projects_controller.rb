@@ -3,7 +3,16 @@
            params.require(:project).permit(:name,:entry_time,:sql_link)
        end
        
-       def show
+       def index
+         if user_signed_in?
+           @projects= Project.all
+         else
+           redirect_to new_user_session_path
+         end
+       end
+       
+       def current_project
+            @project = Project.find_by(params[:id])
        end
        
        def new
@@ -20,10 +29,14 @@
            end
        end
        
-       def show_users
-          @user_assigned = User.where(:project_id == params[:id])
-          @user_free = User.where(:project_id == NIL)
+
+       def show
+          id = params[:id]
+          @project = Project.find(id)
+          @user_free = User.where(:project_id=>NIL)
+          @user_assigned = User.where(:project_id=>id)
        end
+       
 
        def destroy
            

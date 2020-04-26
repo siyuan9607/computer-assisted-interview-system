@@ -1,0 +1,6 @@
+<%provide(:title, "Sign up") %>
+<% @qf.each do |iqf|%>
+  <%= link_to 'qf', qformat_path(iqf) %>
+<% end %>
+
+<h3></h3><%= link_to 'Start', qnaires_path %>. </h3>

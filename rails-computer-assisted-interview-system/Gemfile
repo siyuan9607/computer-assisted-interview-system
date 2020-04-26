@@ -38,6 +38,7 @@ gem 'will_paginate', '~> 3.1.0'
 # TDD and BDD tests
 gem 'rspec'
 gem 'rspec-rails'
+gem 'simplecov', :require => false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

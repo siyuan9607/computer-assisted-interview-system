@@ -69,5 +69,6 @@ Rails.application.routes.draw do
    get "disassign_users" =>"users#disassign"
   resources :users
   resources :projects
-  resources :qnaires, only:[:show, :index, :update]
+  resources :qnaires, only:[:show, :index, :update, :new, :create]
+  resources :qformats
 end

@@ -3,51 +3,11 @@ class QnairesController < ApplicationController
     params.require(:select).permit(:option, :answer)
   end
 
-  def index
+  def create
     #test
-    Qformat.delete_all
     Qnaire.delete_all
-    Qstep.delete_all
     Qstate.delete_all
-    qf=Qformat.new
-    qf.save
-    qs=Qstep.new
-    qs.name = "Do you support President Trump?"
-    qs.document = "Ask if the interviewee supports President Trump. "
-    qs.kind=1
-    qs.save
-    qs2=Qstep.new
-    qs2.name = "Yes I support President Trump"
-    qs2.document = "Ask if the interviewee extremely supports President Trump"
-    qs2.kind = 1
-    qs2.save
-    qs3=Qstep.new
-    qs3.name = "Yes I extremely support President Trump"
-    qs3.document = "Ask if the interviewee extremely supports President Trump"
-    qs3.kind = 1
-    qs3.save
-    qs4=Qstep.new
-    qs4.name = "Long live President Trump his excellency"
-    qs4.document = "To end the questionnaire normally"
-    qs4.kind = 0
-    qs4.save
-    qs.options<<qs2
-    qs.options<<qs3
-    qs.options<<qs4
-    qs2.options<<qs3
-    qs2.options<<qs4
-    qs3.options<<qs4
-    qs.save
-    qs2.save
-    qs3.save
-    qs4.save
     qf=Qformat.first
-    qf.qsteps<<qs
-    qf.qsteps<<qs2
-    qf.qsteps<<qs3
-    qf.qsteps<<qs4
-    qf.startstep_id=qs.id
-    qf.save
     qn=Qnaire.new
     qn.qformat=Qformat.find(qf.id)
     qn.current_id=qf.startstep_id
@@ -55,6 +15,7 @@ class QnairesController < ApplicationController
     qn.save
     @qn=qn
     @qf=qf
+    redirect_to qnaires_path
   end
 
   def show
@@ -64,7 +25,14 @@ class QnairesController < ApplicationController
     if @current.nil?
       @current="nil"
     end
-    @options=Qstep.find(@current).options
+    options=Option.where(:qstep_id => @qn.current_id)
+    @options=Array.new
+    for opt in options do
+      iopt={}
+      iopt["id"]=opt.qstep2_id
+      iopt["notice"]=opt.noticestr
+      @options<<iopt
+    end
   end
 
   def update
@@ -94,5 +62,9 @@ class QnairesController < ApplicationController
       @qn.save
     end
     redirect_to qnaire_path(params[:id])
+  end
+
+  def index
+    @qn=Qnaire.all
   end
 end

@@ -18,7 +18,8 @@
                         <tr>
                           <td><%=project.name%></td>
                           <td><%=project.entry_time%></td>
-                          <td><%=link_to project.sql_link, project.sql_link if project.sql_link.present?%></td>
+                          <!--<td><%=link_to project.sql_link, project.sql_link if project.sql_link.present?%></td>-->
+                          <td><%=link_to "manage", project_path(project.id)%></td>
                         </tr>
                         <%end%>
                 </div></td>

@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   get "create_account" => "users#new"
   get "create_project" => "projects#new"
   get "show_projects" =>"projects#index"
-  #get "show_users"  =>"projects#show_users"
+  get "show_users"  =>"projects#show"
   get "assign_users" =>"users#assign"
    get "disassign_users" =>"users#disassign"
   resources :users

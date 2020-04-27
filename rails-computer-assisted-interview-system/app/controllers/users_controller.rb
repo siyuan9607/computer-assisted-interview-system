@@ -28,14 +28,15 @@ class UsersController < ApplicationController
           @project = Project.find_by(name: project_name)
           @user.update!(project_id: @project.id)
           flash[:notice] = "#{@user.name} has been assigned to #{@project.name}"
-          redirect_to show_projects_path
+          redirect_to show_users_path :id => @project.id
     end
    
    def disassign
           user_email = params[:user_email]
           @user = User.find_by(email: user_email)
+          id = @user.project_id
           @user.update!(project_id: NIL)
-          redirect_to show_projects_path
+          redirect_to show_users_path :id => id
    end      
    
    def destroy

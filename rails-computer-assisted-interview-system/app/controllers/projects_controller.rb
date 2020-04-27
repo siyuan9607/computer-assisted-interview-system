@@ -21,7 +21,7 @@
        
        def create
            @project = Project.new(project_params)
-           @project.qformat_id=Qformat.first
+           @project.qformat_id=Qformat.first.id
            if @project.save
               flash[:notice] = "#{@project.name} has been added to the system"
               redirect_to root_path
@@ -36,6 +36,8 @@
           @project = Project.find(id)
           @user_free = User.where(:project_id=>NIL)
           @user_assigned = User.where(:project_id=>id)
+          @interviews = Qnaire.where(:qformat_id => @project.qformat_id)
+          @qf = @project.qformat_id
        end
        
 

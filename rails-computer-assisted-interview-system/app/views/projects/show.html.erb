@@ -37,3 +37,25 @@
        <%end%>
   </tbody>
 </table>
+
+
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">interview_id</th>
+    <th scope="col">link</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @interviews.each do |interview|%>
+    <tr>
+      <td><%=interview.id%></td>
+      <td><%=link_to "interview", qnaire_path(interview.id)%></td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+
+<h1>Qformat</h1>
+<%= @qf %>

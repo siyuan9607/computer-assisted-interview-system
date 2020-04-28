@@ -2,7 +2,10 @@
 class HomeController < ApplicationController
     def index
         if user_signed_in?
-           if current_user.role == 'supervisor' or current_user.role == 'admin'
+           if current_user.role == 'admin'
+              @projects= Project.all
+              @users= User.all
+           elsif current_user.role == 'supervisor' 
               @projects= Project.all
               @users= User.where(:role => 'interviewer')
            else    

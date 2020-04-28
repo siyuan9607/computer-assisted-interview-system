@@ -1,0 +1,7 @@
+<center><h2>Details about <%=@user.name%></h2></center>
+<h4>Email Address: <%=@user.email%></h4>
+<% if @project != NIL%>
+<h4>Current Project: <%=@project.name%></h4>
+<%end%>
+<%=button_to "delete", user_path(@user), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-primary"%>
+<p></p><%=link_to "Back to main page", root_path, method: :get %>

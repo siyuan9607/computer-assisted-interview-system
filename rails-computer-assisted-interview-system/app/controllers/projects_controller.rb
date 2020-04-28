@@ -40,6 +40,14 @@
        
 
        def destroy
-           
+           id = params[:id]
+           @project = Project.find(id)
+           @users = User.where(:project_id => id)
+           for user in @users
+              user.update!(project_id: NIL)
+           end
+           @project.destroy
+           flash[:notice] = "#{@project.name} has been deleted from the system"
+           redirect_to root_path 
        end
-end
+ end

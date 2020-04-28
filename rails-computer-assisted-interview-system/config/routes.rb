@@ -66,7 +66,8 @@ Rails.application.routes.draw do
   get "show_projects" =>"projects#index"
   get "show_users"  =>"projects#show"
   get "assign_users" =>"users#assign"
-   get "disassign_users" =>"users#disassign"
+  get "disassign_users" =>"users#disassign"
+
   resources :users
   resources :projects
   resources :qnaires, only:[:show, :index, :update, :new, :create]

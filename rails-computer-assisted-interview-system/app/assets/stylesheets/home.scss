@@ -11,8 +11,72 @@ div{
     margin-right: 20px;
 }
 
+div.scroll{
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow: scroll;
+}
+
 .block {
     border-radius: 25px;
     border: 2px solid #73AD21;
     padding: 20px; 
+}
+
+.fixed_header1{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header1 tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 250px;
+}
+
+.fixed_header1 thead tr {
+   display: block;
+}
+
+.fixed_header1 thead {
+  background: #f2f2f2;
+  color: black;
+}
+
+.fixed_header1 th, .fixed_header1 td {
+  padding: 5px;
+  text-align: center;
+  width: 400px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.fixed_header2{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header2 tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 250px;
+}
+
+.fixed_header2 thead tr {
+   display: block;
+}
+
+.fixed_header2 thead {
+  background: #f2f2f2;
+  color: black;
+}
+
+.fixed_header2 th, .fixed_header2 td {
+  padding: 5px;
+  text-align: center;
+  width: 300px;
 }

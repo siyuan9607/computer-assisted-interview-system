@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     end
    
    def show
+       @user = User.find(params[:id])
+       project_id =@user.project_id
+       if project_id !=NIL
+           @project = Project.find(project_id)
+       end
    end
    
    def new
@@ -40,9 +45,13 @@ class UsersController < ApplicationController
    end      
    
    def destroy
-       @user = User.find(current_user)
-       @user.destroy
-       flash[:notice] = "#{@user.name} has been signed out from the system"
+       @user = User.find(params[:id])
+       if @user.role == "admin"
+            flash[:notice] = "#{@user.name} cannot be deleted"
+       else
+            @user.destroy
+            flash[:notice] = "#{@user.name} has been deleted from the system"
+       end
        redirect_to root_path 
    end
    

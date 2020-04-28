@@ -1,58 +1,62 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <% if user_signed_in? %>
-    <div class = "w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 100%; width:100%">
+    <div class = "w3-container", style = "height: 100%; width:100%">
         <center>
-            <h4> Welcome to the Computer-assisted-interview system,<%=current_user.name%></h4>
+            <h2> Welcome to the Computer-assisted-interview system,<%=current_user.name%></h2>
         </center>
         
-        <table class = "w3-table">
-            <tr>
-                <td><div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 350px; width:500px; background-color: rgba(255,0,0,0.1);">
-                    <center><h3>test</h3></center>
-                    <p></p>
-                    <p>button1</button1></p>
-                    <p>button2</p>
-                    <p>button3</p>
+        <div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 350px; width:1063px; background-color: rgba(255,255,255,0);">
+            <center><h3>List of Projects</h3></center>
+            <p></p>
+            <table class = "fixed_header1", style = "width:100%">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Time Created</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <% @projects.each do |project|%>
+                    <tr>
+                        <td><%=project.name%></td>
+                        <td><%=project.entry_time%></td>
+                        <!--<td><%=link_to project.sql_link, project.sql_link if project.sql_link.present?%></td>-->
+                        <td><%=link_to "manage", project_path(project.id), class: "btn btn-primary"%></td>
+                    </tr>
+                    <%end%>
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height:350px; width:1063px; background-color: rgba(255,255,255,0);">
+            <center><h3>List of Registered Interviewer</h3></center>
+            <p></p>
+            <table class = "fixed_header2", style = "width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>More detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user|%>
                         <tr>
-                          <td><%=project.name%></td>
-                          <td><%=project.entry_time%></td>
-                          <!--<td><%=link_to project.sql_link, project.sql_link if project.sql_link.present?%></td>-->
-                          <td><%=link_to "manage", project_path(project.id)%></td>
+                            <td><%=user.name%></td>
+                            <td><%=user.email%></td>
+                            <td><%=user.role%></td>
+                            <td><%=button_to "user details", user_path(user), method: :get, class: "btn btn-primary"%></td>
                         </tr>
-                        <%end%>
-                </div></td>
-                <td><div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 350px; width:500px; background-color: rgba(255,0,0,0.1);">
-                    <center><h3>test</h3></center>
-                    <p></p>
-                    <p>button1</p>
-                    <p>button2</p>
-                    <p>button3</p>
-                </div></td>
-            </tr>
-        </table>
-        
-        <table class = "w3-table">
-            <tr>
-                <td><div class = "w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 350px; width:500px; background-color: rgba(255,0,0,0.1);">
-                    <table class = "w3-table">
-                        <tr>
-                          <th>Name</th>
-                          <th>Email</th>
-                          <th>Role</th>
-                        </tr>
-                        <% @users.each do |user|%>
-                        <tr>
-                          <td><%=user.name%></td>
-                          <td><%=user.email%></td>
-                          <td><%=user.role%></td>
-                        </tr>
-                        <%end%>
-                </div></td>
-            </tr>
-        </table>
+                    <%end%>
+                </tbody>
+            </table>
+            
+        </div>
     </div>
+    
     
 <%else%>
     <h1> prepare to log in</h1>

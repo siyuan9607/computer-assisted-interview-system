@@ -39,6 +39,9 @@
 </table>
 
 
+<h3><%=button_to "delete", project_path(@project), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-primary"%></h3>
+
+
 
 <table class="table">
   <thead class="thead-dark">
@@ -59,3 +62,4 @@
 
 <h1>Qformat</h1>
 <%= @qf %>
+

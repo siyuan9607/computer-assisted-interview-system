@@ -1,0 +1,54 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+div{
+    margin: 0px;
+}
+
+.arrow {
+    margin-top: 230px;
+    margin-left: 33px;
+    border: solid #337AB7;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.toright {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.delbtn {
+    margin-left: 950px;
+}
+
+.fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 420px;
+}
+
+.fixed_header thead tr {
+   display: block;
+}
+
+.fixed_header thead {
+  background: #f2f2f2;
+  color: black;
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 10px;
+  text-align: left;
+  width: 400px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}

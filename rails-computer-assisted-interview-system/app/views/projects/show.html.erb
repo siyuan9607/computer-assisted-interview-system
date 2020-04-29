@@ -1,65 +1,54 @@
-<h1 class = "text-center">Navigation</h1><br>
-
-<h2>Current project: <%=@project.name%></h2>
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">interviewer</th>
-      <th scope="col">Assign user</th>
-    </tr>
-  </thead>
-  <tbody>
-       <% @user_free.each do |user|%>
-            <%if user.role == 'interviewer'%>
-            <tr>
-                <td><%=user.name%></td>
-                <td><%=link_to "assign interviewer", assign_users_url(:user_name => user.name, :project_name => @project.name)%></td>
-            </tr>
-            <%end%>
-       <%end%>
-  </tbody>
-</table>
-
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">interviewer</th>
-      <th scope="col">Assign user</th>
-    </tr>
-  </thead>
-  <tbody>
-       <% @user_assigned.each do |user|%>
-            <tr>
-                <td><%=user.name%></td>
-                 <td><%=link_to "dis_assign interviewer", disassign_users_url(:user_email => user.email)%></td>
-            </tr>
-       <%end%>
-  </tbody>
-</table>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<h1 class = "text-center">Project-User Assignment</h1>
+<center><h3>Current project: <%=@project.name%></h3></center>
 
 
-<h3><%=button_to "delete", project_path(@project), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-primary"%></h3>
+<div class="w3-container", style = "height: 485px; width:100%; background-color: rgba(255,255,255,0);">
+  
+  <div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 465px; width:45%; float: left; background-color: rgba(255,255,255,0);">
+    <table class="fixed_header">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">interviewer</th>
+          <th scope="col">Assign user</th>
+        </tr>
+      </thead>
+      <tbody>
+           <% @user_free.each do |user|%>
+                <%if user.role == 'interviewer'%>
+                <tr>
+                    <td><%=user.name%></td>
+                    <td><%=link_to "assign interviewer", assign_users_url(:user_name => user.name, :project_name => @project.name)%></td>
+                </tr>
+                <%end%>
+           <%end%>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="w3-container", style = "height: 485px; width: 10%; float: left; background-color: rgba(255,255,255,0);">
+    <div class="arrow toright"></div>
+  </div>
+  
+  <div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 465px; width:45%; float: left; background-color: rgba(255,255,255,0);">
+    <table class="fixed_header">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">interviewer</th>
+          <th scope="col">Disassign user</th>
+        </tr>
+      </thead>
+      <tbody>
+           <% @user_assigned.each do |user|%>
+                <tr>
+                    <td><%=user.name%></td>
+                     <td><%=link_to "dis_assign interviewer", disassign_users_url(:user_email => user.email)%></td>
+                </tr>
+           <%end%>
+      </tbody>
+    </table>  
+  </div>
+  
+</div>
 
-
-
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">interview_id</th>
-    <th scope="col">link</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @interviews.each do |interview|%>
-    <tr>
-      <td><%=interview.id%></td>
-      <td><%=link_to "interview", qnaire_path(interview.id)%></td>
-    </tr>
-  <%end%>
-  </tbody>
-</table>
-
-<h1>Qformat</h1>
-<%= @qf %>
-
+<div class='delbtn'><%=button_to "delete this project", project_path(@project), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger"%></div>

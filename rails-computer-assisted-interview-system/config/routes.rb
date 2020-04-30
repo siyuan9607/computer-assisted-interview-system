@@ -62,6 +62,8 @@ Rails.application.routes.draw do
   get "qnaires" => "qnaires#index"
   get "qnaires_start" => "qnaires#show"
   get "create_account" => "users#new"
+  post "update_account" => "users#edit"
+  post "update_project" => "projects#edit"
   get "create_project" => "projects#new"
   get "show_projects" =>"projects#index"
   get "show_users"  =>"projects#show"

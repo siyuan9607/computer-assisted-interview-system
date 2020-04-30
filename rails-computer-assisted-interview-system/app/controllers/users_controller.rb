@@ -44,6 +44,20 @@ class UsersController < ApplicationController
           redirect_to show_users_path :id => id
    end      
    
+   def edit
+      @user = User.find(params[:id])
+   end
+  
+   def update
+       @user = User.find(params[:id])
+       if @user.update_attributes(user_params)
+           flash[:notice] = "#{@user.name} has been updated in the system"
+           redirect_to root_path
+       else
+           render 'edit'
+       end
+   end
+   
    def destroy
        @user = User.find(params[:id])
        if @user.role == "admin"

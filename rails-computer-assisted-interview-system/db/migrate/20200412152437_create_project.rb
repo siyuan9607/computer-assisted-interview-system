@@ -3,6 +3,7 @@ class CreateProject < ActiveRecord::Migration
         create_table :projects do |t|
           t.string :name,         null: false, default: ""
           t.datetime :entry_time, null: false, default: ""
+          t.datetime :last_updated_time, null: false, default: ""
           t.string :sql_link
         end
     end

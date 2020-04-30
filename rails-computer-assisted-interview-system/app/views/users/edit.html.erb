@@ -1,0 +1,50 @@
+<%-# This file is app/views/users/edit -%>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+<style>
+.w3-lobster {
+  font-family: "Lobster", serif;
+}
+</style>
+
+<% provide(:title, 'Update') %>
+<div class="col-md-4 col-md-offset-4">
+    <center><div class = "w3-container; w3-panel w3-round w3-border w3-border", style = "background-color: rgba(0,0,0,0.1)">
+        <center><div class="w3-container w3-lobster">
+            <p class="w3-xxlarge">Update user information</p>
+        </div></center>
+        
+        <%= form_for(@user) do |f| %>
+            <%= f.label :name %>
+            <p></p>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+            <p></p>
+            
+            <%= f.label :email %>
+            <p></p>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email"%>
+            <p></p>
+            
+            <%= f.label :password%>
+            <p></p>
+             <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "email"%>
+            <p></p>
+            <%= f.label :password_confirmation %>
+            <p></p>
+            <%= f.password_field :password_confirmation %>
+            <p></p>
+            <%= f.label :role %>
+            <%= f.select :role, ['supervisor','interviewer'], class: 'multiple'  %>
+            <p></p>
+            
+            <div class="col-md-6 col-md-offset-3">
+                <%= f.submit "Update information", class: "btn btn-primary", id: "update_account" %>
+                <p></p>
+            </div></center>
+        <% end %>
+    </div>
+</div>

@@ -50,5 +50,5 @@
   </div>
   
 </div>
-
+<div class='delbtn'><%=button_to "update this project", update_project_url(:id=>@project.id), class: "btn btn-danger"%></div>
 <div class='delbtn'><%=button_to "delete this project", project_path(@project), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger"%></div>

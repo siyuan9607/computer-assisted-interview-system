@@ -1,6 +1,6 @@
  class ProjectsController < ApplicationController
        def project_params
-           params.require(:project).permit(:name,:entry_time,:sql_link)
+           params.require(:project).permit(:name,:entry_time,:last_updated_time,:sql_link)
        end
        
        def index
@@ -21,7 +21,9 @@
        
        def create
            @project = Project.new(project_params)
-           @project.qformat_id=Qformat.first.id
+           if Qformat.first !=NIL
+             @project.qformat_id=Qformat.first.id
+           end
            if @project.save
               flash[:notice] = "#{@project.name} has been added to the system"
               redirect_to root_path
@@ -29,7 +31,19 @@
               render 'new'
            end
        end
-       
+      def edit
+           @project = Project.find(params[:id])
+      end
+  
+      def update
+           @project = Project.find(params[:id])
+           if @project.update_attributes(project_params)
+               flash[:notice] = "#{@project.name} has been updated in the system"
+               redirect_to root_path
+           else
+               render 'edit'
+           end
+      end
 
        def show
           id = params[:id]

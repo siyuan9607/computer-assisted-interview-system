@@ -1,6 +1,6 @@
  class ProjectsController < ApplicationController
        def project_params
-           params.require(:project).permit(:name,:entry_time,:last_updated_time,:sql_link)
+           params.require(:project).permit(:name,:entry_time,:last_updated_time)
        end
        
        def index
@@ -16,11 +16,14 @@
        end
        
        def new
-          @project = Project.new
+         #@project = Project.new
        end
        
        def create
-           @project = Project.new(project_params)
+           @project = Project.new
+           @project.name=:project.name
+           @project.entry_time=:project.entry_time
+
            if Qformat.first !=NIL
              @project.qformat_id=Qformat.first.id
            end

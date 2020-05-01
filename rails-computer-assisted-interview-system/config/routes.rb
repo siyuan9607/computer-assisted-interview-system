@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   post "update_account" => "users#edit"
   post "update_project" => "projects#edit"
   get "create_project" => "projects#new"
+  post "create_project" => "projects#create"
   get "show_projects" =>"projects#index"
   get "show_users"  =>"projects#show"
   get "assign_users" =>"users#assign"

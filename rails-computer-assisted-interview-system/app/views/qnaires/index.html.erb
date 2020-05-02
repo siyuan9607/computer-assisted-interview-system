@@ -1,6 +1,11 @@
 <%provide(:title, "Sign up") %>
-<% @qn.each do |iqn|%>
+<%# @qn.each do |iqn|%>
+  <%#= link_to 'qn', qnaire_path(iqn) %>
+<%# end %>
+
+Callback:
+<%@callback_qnaires.each do |iqn| %>
   <%= link_to 'qn', qnaire_path(iqn) %>
 <% end %>
 
-<h3></h3><%= link_to 'Start', qnaires_path %>. </h3>
+<h3></h3><%= link_to 'Start',new_qnaire_path %>. </h3>

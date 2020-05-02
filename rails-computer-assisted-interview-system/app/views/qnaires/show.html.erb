@@ -15,5 +15,6 @@ You are at questionnaire <%= @qn.id %><br>
     <% end %>
   </form>
 <%else %>
-This Questionnaire is already completed.
+  This Questionnaire is already completed.
+  <%= link_to 'New',qnaires_path %>
 <%end %>

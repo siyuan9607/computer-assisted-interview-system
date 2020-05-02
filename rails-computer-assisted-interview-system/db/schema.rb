@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200424190215) do
+ActiveRecord::Schema.define(version: 20200502030244) do
 
   create_table "options", force: :cascade do |t|
     t.integer  "qstep_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20200424190215) do
     t.integer  "qformat_id"
     t.integer  "current_id"
     t.integer  "status"
+    t.integer  "user_id"
   end
 
   add_index "qnaires", ["current_id"], name: "index_qnaires_on_current_id"

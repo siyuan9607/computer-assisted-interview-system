@@ -5,17 +5,30 @@ class QnairesController < ApplicationController
 
   def create
     #test
-    Qnaire.delete_all
-    Qstate.delete_all
-    qf=Qformat.first
+    # Qnaire.delete_all
+    # Qstate.delete_all
+    # qf=Qformat.first
+    # qn=Qnaire.new
+    # qn.qformat=Qformat.find(qf.id)
+    # qn.current_id=qf.startstep_id
+    # qn.status=200
+    # qn.save
+    # @qn=qn
+    # @qf=qf
+    proj=User.find(current_user.id).project
+    if proj.nil?
+      flash[:notice]="You are assigned to no project. "
+      redirect_to qnaires_path
+      return
+    end
     qn=Qnaire.new
-    qn.qformat=Qformat.find(qf.id)
+    proj=Project.find(User.find(current_user.id).project)
+    qf=Qformat.find(proj.qformat_id)
+    qn.qformat=qf
     qn.current_id=qf.startstep_id
     qn.status=200
     qn.save
-    @qn=qn
-    @qf=qf
-    redirect_to qnaires_path
+    redirect_to qnaire_path(qn.id)
   end
 
   def show
@@ -64,7 +77,9 @@ class QnairesController < ApplicationController
     redirect_to qnaire_path(params[:id])
   end
 
+
+
   def index
-    @qn=Qnaire.all
+    @callback_qnaires=Qnaire.where(:status => 300, :user_id => current_user.id)
   end
 end

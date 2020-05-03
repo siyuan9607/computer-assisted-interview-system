@@ -46,6 +46,21 @@ class QnairesController < ApplicationController
       iopt["notice"]=opt.noticestr
       @options<<iopt
     end
+    questions=Question.where(:step_id => @qn.current_id)
+    @questions=Array.new
+    for ques in questions do
+      ques_item={}
+      ques_item["id"]=ques.id
+      ques_item["content"]=ques.content
+      ques_item["answers"]=Array.new
+      for ans in ques.qanswers
+        ians={}
+        ians["id"]=ans.id
+        ians["content"]=ans.content
+        ques_item["answers"]<<ians
+      end
+      @questions<<ques_item
+    end
   end
 
   def update
@@ -56,6 +71,18 @@ class QnairesController < ApplicationController
       if (opt==nil)
         redirect_to qnaire_path(params[:id])
         return
+      end
+      questions=Question.where(:step_id => @qn.current_id)
+      @questions=Array.new
+      for ques in questions do
+        ans_id=params[:select][("answer_"+ques.id.to_s).to_sym]
+        unless ans_id.nil?
+          ans=Qanswer.find(ans_id)
+          ans.count=ans.count+1
+          ans.save
+        else
+          abort
+        end
       end
       @opt=Qstep.find(opt)
       qst=Qstate.new

@@ -56,3 +56,13 @@
     <td><%=button_to "delete this project", project_path(@project), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
   </tr>
 </table>
+
+<% @steps.each do |step| %>
+  Step:<%= step["name"] %><br>
+  <% step["questions"].each do |question| %>
+    Question:<%= question["content"] %><br>
+    <% question["answers"].each do |answer| %>
+      Answer:<%= answer["content"] %>Count:<%=answer["count"] %><br>
+    <%end %>
+  <% end %>
+<% end %>

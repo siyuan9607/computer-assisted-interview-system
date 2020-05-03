@@ -4,8 +4,15 @@ You are at questionnaire <%= @qn.id %><br>
   Here is the document or direction for interviewer:<br>
   <%= @current.document %> <br>
   <form method="post">
-    Try these options to go on. <br>
+    Here are problems.  <br>
     <%= form_for :select, url: qnaire_path(@qn), method: :put do |select|%>
+      <% @questions.each do |ques| %>
+        <%= ques["content"] %> <br>
+        <% ques["answers"].each do |ans| %>
+          <%= select.radio_button ("answer_"+ques["id"].to_s).to_sym, ans["id"] %> <%= ans["content"] %> <br>
+        <% end %>
+      <% end %>
+      Choose the next step. <br>
       <% @options.each do |opt|%>
         <%= select.radio_button :option, opt["id"] %> <%=opt["notice"]%><br>
       <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200503050133) do
+ActiveRecord::Schema.define(version: 20200503063010) do
 
   create_table "options", force: :cascade do |t|
     t.integer  "qstep_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20200503050133) do
     t.string   "content"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "count"
   end
 
   add_index "qanswers", ["question_id"], name: "index_qanswers_on_question_id"

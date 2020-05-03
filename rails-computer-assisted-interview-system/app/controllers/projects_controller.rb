@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
       if status[i]==5 and status[i+1]!=6
         return "Format wrong. Please search the document. #11"
       end
-      if status[i]!=5 and status[i+1]!=6 and status[i+1]==6
+      if status[i]!=5 and status[i]!=6 and status[i+1]==6
         return "Format wrong. Please search the document. #12"
       end
     end
@@ -75,6 +75,7 @@ class ProjectsController < ApplicationController
     end
     qsid=Array.new(step_n)
     for i in 0..step_n-1
+      print i
       qs=Qstep.new
       for ii in step_s[i]..step_s[i+1]-1
         if status[ii]==1
@@ -108,11 +109,13 @@ class ProjectsController < ApplicationController
         ques=Question.new
         ques.step_id=qsid[count]
         ques.content=aff[i]
-        ques.save
+        #ques.save
+
         for ii in i+1..step_s[count+1]-1
-          if status[i]==6
+          if status[ii]==6
             ans=Qanswer.new
             ans.content=aff[ii]
+            ans.count=0
             ans.save
             ques.qanswers<<ans
           else
@@ -191,7 +194,31 @@ class ProjectsController < ApplicationController
     @user_free = User.where(:project_id=>NIL)
     @user_assigned = User.where(:project_id=>id)
     @interviews = Qnaire.where(:qformat_id => @project.qformat_id)
-    @qf = @project.qformat_id
+    qf=@project.qformat_id
+    qsteps=Qstep.where(:qformat_id => qf)
+    @steps=Array.new
+    for step in qsteps
+      istep={}
+      istep["name"]=step.name
+      quess=Array.new
+      questions=Question.where(:step_id => step.id)
+      for ques in questions
+        iques={}
+        iques["content"]=ques.content
+        anss=Array.new
+        answers=Qanswer.where(:question_id => ques.id)
+        for ans in answers
+          ians={}
+          ians["content"]=ans.content
+          ians["count"]=ans.count
+          anss<<ians
+        end
+        iques["answers"]=anss
+        quess<<iques
+      end
+      istep["questions"]=quess
+      @steps<<istep
+    end
   end
 
 

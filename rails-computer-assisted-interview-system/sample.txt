@@ -1,0 +1,38 @@
+num:0
+name:starting
+document:Depending on the gender of the interviewee, questions should go differently.
+option:1
+notice:I am male
+option:2
+notice:I am female
+num:1
+name:male version
+document:Questionnaire for men. 
+question:Do you think we should do more to reduce the gender inequality in our country?
+answer:Yes
+answer:No, we have already done enough. 
+question:Are you married?
+answer:Yes
+answer:No
+question:Do you have children?
+answer:Yes
+answer:No
+option:3
+notice:End the questionnaire. 
+num:2
+name:female version
+document:Questionnaire for women. 
+question:Are you satisfied with gender equality of our country?
+answer:Yes, I feel that I am equal with men
+answer:No, women are still suffering
+question:Are you married?
+answer:Yes
+answer:No
+question:Do you have children?
+answer:Yes
+answer:No
+option:3
+notice:End the questionnaire. 
+num:3
+name:The fin
+document:Thanks to the interviewee. 

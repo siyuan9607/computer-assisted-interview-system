@@ -3,6 +3,10 @@
 <% if @project != NIL%>
 <h4>Current Project: <%=@project.name%></h4>
 <%end%>
-<%=button_to "Update", update_account_url(:id => @user.id), class: "btn btn-primary"%>
-<%=button_to "delete", user_path(@user), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-primary"%>
+<table class = "user_btns">
+    <tr>
+        <td><%=button_to "Update", update_account_url(:id => @user.id), class: "btn btn-primary"%></td>
+        <td><%=button_to "delete", user_path(@user), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
+    </tr>
+</table>
 <p></p><%=link_to "Back to main page", root_path, method: :get %>

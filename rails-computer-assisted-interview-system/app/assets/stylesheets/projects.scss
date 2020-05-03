@@ -19,8 +19,12 @@ div{
     -webkit-transform: rotate(-45deg);
 }
 
-.delbtn {
-    margin-left: 950px;
+.btns {
+    margin-left: 780px;
+}
+
+.btns td{
+    padding: 10px;
 }
 
 .fixed_header{
@@ -30,7 +34,7 @@ div{
 }
 
 .fixed_header tbody{
-  display:block;
+  display: block;
   width: 100%;
   overflow: auto;
   height: 420px;
@@ -52,3 +56,13 @@ div{
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
+
+.textarea {
+    width: 400px;
+    height: 300px;
+    overflow: auto;
+}
+
+.timebox {
+    width: 250px;
+}

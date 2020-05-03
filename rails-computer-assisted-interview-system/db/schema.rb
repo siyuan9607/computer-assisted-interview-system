@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200502030244) do
+ActiveRecord::Schema.define(version: 20200503050133) do
 
   create_table "options", force: :cascade do |t|
     t.integer  "qstep_id"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20200502030244) do
     t.string   "sql_link"
     t.integer  "qformat_id"
   end
+
+  create_table "qanswers", force: :cascade do |t|
+    t.integer  "question_id"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "qanswers", ["question_id"], name: "index_qanswers_on_question_id"
 
   create_table "qformats", force: :cascade do |t|
     t.string   "name"
@@ -86,6 +95,15 @@ ActiveRecord::Schema.define(version: 20200502030244) do
 
   create_table "qsteps_qsteps", force: :cascade do |t|
   end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "step_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "questions", ["step_id"], name: "index_questions_on_step_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

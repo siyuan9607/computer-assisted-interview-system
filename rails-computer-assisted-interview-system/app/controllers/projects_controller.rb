@@ -27,6 +27,12 @@ class ProjectsController < ApplicationController
       elsif form_str[i] =~ /notice:.+/
         status[i]=4
         aff[i]=/notice:(.+)/.match(form_str[i]).captures[0]
+      elsif form_str[i] =~ /question:.+/
+        status[i]=5
+        aff[i]=/question:(.+)/.match(form_str[i]).captures[0]
+      elsif form_str[i] =~ /answer:.+/
+        status[i]=6
+        aff[i]=/answer:(.+)/.match(form_str[i]).captures[0]
       else
         return "Format wrong. Please search the document. #1"
       end
@@ -41,6 +47,12 @@ class ProjectsController < ApplicationController
       end
       if status[i]!=3 and status[i+1]==4
         return "Format wrong. Please search the document. #4"
+      end
+      if status[i]==5 and status[i+1]!=6
+        return "Format wrong. Please search the document. #11"
+      end
+      if status[i]!=5 and status[i+1]!=6 and status[i+1]==6
+        return "Format wrong. Please search the document. #12"
       end
     end
     for i in 0..step_n-1
@@ -92,6 +104,23 @@ class ProjectsController < ApplicationController
         op.noticestr=aff[i+1]
         op.save
       end
+      if status[i]==5
+        ques=Question.new
+        ques.step_id=qsid[count]
+        ques.content=aff[i]
+        ques.save
+        for ii in i+1..step_s[count+1]-1
+          if status[i]==6
+            ans=Qanswer.new
+            ans.content=aff[ii]
+            ans.save
+            ques.qanswers<<ans
+          else
+            break
+          end
+        end
+        ques.save
+      end
     end
     qf=Qformat.new
     qf.startstep_id=qsid[0]
@@ -132,7 +161,7 @@ class ProjectsController < ApplicationController
     @project.qformat_id=qfid
 
     if Qformat.first !=NIL
-      @project.qformat_id=Qformat.first.id
+      @project.qformat_id=qfid
     end
     if @project.save
       flash[:notice] = "#{@project.name} has been added to the system"

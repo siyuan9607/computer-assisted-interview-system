@@ -9,11 +9,11 @@ Feature: create a new account
 Background: there is an administrator account
 
   Given the following users exist:
-  | email       page      | password  | password_confirmation   | role    |
+  | email             | password  | password_confirmation   | role    |
   | admin@example.com | password  | password                | admin   |
 
 Scenario: create a supervisor account
-  When I am logged in to the home 
+  When I am logged in to the home page
   Then I should be on the home page
   And I click "Create Account"
   Then I should be on the sign up page

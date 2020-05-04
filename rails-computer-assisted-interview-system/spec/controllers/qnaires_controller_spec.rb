@@ -20,7 +20,7 @@ describe QnairesController do
         end
         it "should show the qnaires page" do
             pending "Add a qnaire here for test"
-            #get :show
+            get :show
             #response.should redirect_to(new_user_session_path)
         end
     end

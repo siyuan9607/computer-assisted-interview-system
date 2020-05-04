@@ -1,4 +1,5 @@
-You are at questionnaire <%= @qn.id %><br>
+<h4>
+  You are currently on survey "@project.name" <br>
 
 <%if @qn.status==200 %>
   Here is the document or direction for interviewer:<br>
@@ -18,10 +19,14 @@ You are at questionnaire <%= @qn.id %><br>
       <% end %>
       <%= select.label "Answer"%>
       <%= select.text_field :answer%><br>
-      <%= select.submit "Ok" %>
+      <%= select.submit "OK" %>
     <% end %>
   </form>
 <%else %>
-  This Questionnaire is already completed.
-  <%= link_to 'New',qnaires_path %>
+  <center><h3>This Questionnaire is already completed</h3></center>
+  <br>
+  <br>
+  <div class = "r"><%= link_to 'New',qnaires_path %></div>
+  <div class = "r"><%=link_to "Back to main page", root_path, method: :get %></div>
 <%end %>
+</h4>

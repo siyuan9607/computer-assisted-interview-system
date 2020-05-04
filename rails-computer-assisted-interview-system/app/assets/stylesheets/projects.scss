@@ -66,3 +66,12 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 .timebox {
     width: 250px;
 }
+
+.showme {
+  display: none;
+}
+
+.showhim:hover .showme {
+  display: block;
+  margin-left: 230px;
+}

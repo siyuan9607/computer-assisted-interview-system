@@ -1,4 +1,9 @@
 <%provide(:title, "Sign up") %>
+<center><h3>You are currenly working on @project.name.<br><br>Click "Proceed" button to view questions</h3>
+<br>
 <%= form_for :select, url: qnaires_path, method: :post do |select|%>
-  <%= select.submit "Ok" %>
+  <%= select.submit "Proceed" %>
 <% end %>
+<br>
+</center>
+<br><div class = "r"><%=link_to "Back to main page", root_path, method: :get %></div>

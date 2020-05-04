@@ -1,11 +1,36 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <%provide(:title, "Sign up") %>
 <%# @qn.each do |iqn|%>
   <%#= link_to 'qn', qnaire_path(iqn) %>
 <%# end %>
 
-Callback:
+<center><h2>Welcome to the interview system, <%=@current_user.name %></h2></center>
+<div class = "r">Callback: xxx-xxx-xxxx</div>
 <%@callback_qnaires.each do |iqn| %>
   <%= link_to 'qn', qnaire_path(iqn) %>
 <% end %>
-
-<h3></h3><%= link_to 'Start',new_qnaire_path %>. </h3>
+<p></p>
+<div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 450px; width:100%; background-color: rgba(255,255,255,0);">
+  <center><h3>projects assigned to you are listed below </h3></center>
+  <table class = "fixed_header">
+    <thead>
+      <tr>
+        <th> Project Name </th>
+        <th>              </th>
+        <th>              </th>
+        <th>              </th>
+        <th>    Options   </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# @projects.each do |project|#%>
+      <tr>
+        <td> @project.name </td>
+        <th>               </th>
+        <th>               </th>
+        <th>               </th>
+        <td><h3><%= link_to 'Start',new_qnaire_path %></h3></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

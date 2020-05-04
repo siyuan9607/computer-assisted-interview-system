@@ -1,3 +1,40 @@
 // Place all the styles related to the qnaires controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.r {
+  text-align: right;
+  margin-right: 50px;
+} 
+.fixed_header{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.fixed_header tbody{
+  display:block;
+  width: 100%;
+  overflow: auto;
+  height: 250px;
+}
+
+.fixed_header thead tr {
+   display: block;
+}
+
+.fixed_header thead {
+  background: #f2f2f2;
+  color: black;
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: center;
+  width: 400px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+h4 {
+    line-height: 1.6;
+    padding-left: 20px;
+}

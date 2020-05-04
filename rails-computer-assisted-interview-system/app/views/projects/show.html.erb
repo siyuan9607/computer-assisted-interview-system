@@ -1,10 +1,23 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <h1 class = "text-center">Project-User Assignment</h1>
-<center><h3>Current project: <%=@project.name%></h3></center>
-
+<div class = "showhim">
+  <center><h3>Current project: <%=@project.name%></h3></center>
+  <div class = "showme">
+    <div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "width:70%; background-color: rgba(0,255,0,0.1);">
+      <% @steps.each do |step| %>
+        Step:<%= step["name"] %><br>
+        <% step["questions"].each do |question| %>
+          Question:<%= question["content"] %><br>
+          <% question["answers"].each do |answer| %>
+            Answer:<%= answer["content"] %>Count:<%=answer["count"] %><br>
+          <%end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="w3-container", style = "height: 485px; width:100%; background-color: rgba(255,255,255,0);">
-  
   <div class="w3-container; w3-panel w3-round w3-border w3-border-blue", style = "height: 465px; width:45%; float: left; background-color: rgba(255,255,255,0);">
     <table class="fixed_header">
       <thead class="thead-dark">
@@ -56,13 +69,3 @@
     <td><%=button_to "delete this project", project_path(@project), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
   </tr>
 </table>
-
-<% @steps.each do |step| %>
-  Step:<%= step["name"] %><br>
-  <% step["questions"].each do |question| %>
-    Question:<%= question["content"] %><br>
-    <% question["answers"].each do |answer| %>
-      Answer:<%= answer["content"] %>Count:<%=answer["count"] %><br>
-    <%end %>
-  <% end %>
-<% end %>

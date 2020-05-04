@@ -22,4 +22,25 @@ describe HomeController do
             response.should render_template(root_path)
         end
     end
+    describe "Supervisor logged in\n" do
+        before :each do
+            @supervisor = User.create!({ :name => 's1', :email => 's1@example.com', :password => 'password', :password_confirmation => 'password',:role => "supervisor" })
+            sign_in @supervisor
+        end
+        it "should be successful and render the home page" do
+            get :index
+            response.should be_success
+            response.should render_template(root_path)
+        end
+    end
+    describe "Interviewer logged in\n" do
+        before :each do
+            @interviewer = User.create!({ :name => 'i1', :email => 'i1@example.com', :password => 'password', :password_confirmation => 'password',:role => "interviewer" })
+            sign_in @interviewer
+        end
+        it "should render the qnaires page" do
+            get :index
+            response.should redirect_to(qnaires_path)
+        end
+    end
 end

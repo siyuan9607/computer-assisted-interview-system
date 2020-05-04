@@ -14,11 +14,25 @@ describe UsersController do
     describe "Admin logged in\n" do
         before :each do
             @admin = User.create!({ :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password',:role => "admin" })
+            @interviewer = User.create!({ :name => 'i1', :email => 'i1@example.com', :password => 'password', :password_confirmation => 'password',:role => "interviewer" })
+            @project = Project.create!({ :name => 'test_project'})
             sign_in @admin
         end
         it "should redirect to new user page" do
             get :new
             response.should render_template(:new)
+        end
+        it "can edit user information" do
+            params = {:id => 2}
+            get :edit, params
+            response.should render_template(:edit)
+        end
+        it "can assign or disassign project to users" do
+            params = {:user_name => "i1", :user_email => "i1@example.com", :project_name => "test_project"}
+            get :assign, params
+            response.should_not render_template(:assign)
+            get :disassign, params
+            response.should_not render_template(:disassign)
         end
     end
 end

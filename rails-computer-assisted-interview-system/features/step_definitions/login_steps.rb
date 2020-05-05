@@ -54,7 +54,17 @@ And /I should not see "(.*)"/ do |content|
 end
 
 # Then
-Then /I should be on the (.*) page/ do |page_name|
+Then /I should be on the (.*) page for "(.*)"$/ do |page_name, user_name|
+    @user ||= User.where(:name => user_name).first
+    path_mapping = {
+        'user detail' => "/users/#{@user.id}",
+        'user update' => update_account_path,
+    }
+    current_path = URI.parse(current_url).path
+    current_path.should == path_mapping[page_name]
+end
+
+Then /^I should be on the (.*) page$/ do |page_name|
     path_mapping = {
         'login' => new_user_session_path,
         'home' => root_path,

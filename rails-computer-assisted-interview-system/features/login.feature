@@ -1,4 +1,3 @@
-# created by Tao Ni
 
 Feature: login to the computer assisted interview system
  
@@ -9,8 +8,8 @@ Feature: login to the computer assisted interview system
 Background: there is an administrator account
 
   Given the following users exist:
-  | email             | password  | password_confirmation   | role    |
-  | admin@example.com | password  | password                | admin   |
+  | name    | email               | password  | password_confirmation   | role        |
+  | admin   | admin@example.com   | password  | password                | admin       |
 
 Scenario: login to the system
   When I go to the home page

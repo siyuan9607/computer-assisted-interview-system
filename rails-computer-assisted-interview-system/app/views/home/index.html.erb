@@ -51,7 +51,7 @@
                             <td><%=user.name%></td>
                             <td><%=user.email%></td>
                             <td><%=user.role%></td>
-                            <td><%=button_to "user details", user_path(user), method: :get, class: "btn btn-primary"%></td>
+                            <td><%=button_to "user details", user_path(user), method: :get, class: "btn btn-primary", id: "detail_#{user.name}"%></td>
                         </tr>
                     <%end%>
                 </tbody>

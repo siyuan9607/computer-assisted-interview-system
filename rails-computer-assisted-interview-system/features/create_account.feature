@@ -9,8 +9,8 @@ Feature: create a new account
 Background: there is an administrator account
 
   Given the following users exist:
-  | email             | password  | password_confirmation   | role    |
-  | admin@example.com | password  | password                | admin   |
+  | name    | email               | password  | password_confirmation   | role        |
+  | admin   | admin@example.com   | password  | password                | admin       |
 
 Scenario: create a supervisor account
   When I am logged in to the home page

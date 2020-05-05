@@ -5,8 +5,8 @@
 <%end%>
 <table class = "user_btns">
     <tr>
-        <td><%=button_to "Update", update_account_url(:id => @user.id), class: "btn btn-primary"%></td>
-        <td><%=button_to "delete", user_path(@user), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
+        <td><%=button_to "Update", update_account_url(:id => @user.id), class: "btn btn-primary", id: "update_user"%></td>
+        <td><%=button_to "delete", user_path(@user), method: :delete, data:{confirm: "Are you sure?"}, class: "btn btn-danger", id: "delete_user"%></td>
     </tr>
 </table>
 <p></p><%=link_to "Back to main page", root_path, method: :get %>

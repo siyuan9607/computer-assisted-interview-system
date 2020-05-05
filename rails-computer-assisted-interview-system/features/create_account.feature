@@ -9,8 +9,8 @@ Feature: create a new account
 Background: there is an administrator account
 
   Given the following users exist:
-  | email             | password  | password_confirmation   | role    |
-  | admin@example.com | password  | password                | admin   |
+  | name    | email               | password  | password_confirmation   | role        |
+  | admin   | admin@example.com   | password  | password                | admin       |
 
 Scenario: create a supervisor account
   When I am logged in to the home page
@@ -21,6 +21,7 @@ Scenario: create a supervisor account
   And I fill in "user_email" with "supervisor1@example.com"
   And I fill in "user_password" with "password"
   And I fill in "user_password_confirmation" with "password"
+  And I select "user_role" as "supervisor"
   And I press "create_account"
   Then I should be on the home page
   And I should see "supervisor1 has been added to the system"
@@ -54,4 +55,5 @@ Scenario: create an interviewer account
   And I should not see "Create Account"
   And I should not see "Create Project"
   And I should not see "Navigation"
+  And I should see "projects assigned to you are listed below"
   

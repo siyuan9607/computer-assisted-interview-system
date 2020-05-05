@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(version: 20200503063010) do
   add_index "optrecords", ["qstep_id"], name: "index_optrecords_on_qstep_id"
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",              default: "", null: false
-    t.datetime "entry_time",                     null: false
-    t.datetime "last_updated_time",              null: false
+    t.string   "name"
+    t.datetime "false"
+    t.datetime ""
+    t.datetime "entry_time"
     t.string   "sql_link"
     t.integer  "qformat_id"
   end
